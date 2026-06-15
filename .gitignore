@@ -1,0 +1,15 @@
+# === 大数据集(放在 Hugging Face,不进 Git)===
+code/data/epc_london_building_stock.csv
+
+# === macOS ===
+.DS_Store
+
+# === Python ===
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# === 临时/压缩文件 ===
+*.zip
