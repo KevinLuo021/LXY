@@ -106,3 +106,49 @@ pip install pandas geopandas numpy scikit-learn matplotlib seaborn esda libpysal
 1. clone 本仓库
 2. 按上面的说明下载数据集
 3. 依次运行 `code/` 下编号 01–05 的 notebook
+
+---
+
+## Variable Reference Table
+
+| Variable Name | Description | Processing Method | Direction |
+|---|---|---|---|
+| **Identifiers** | | | |
+| `lsoa11cd` | LSOA 2011 code | ONS boundary code | — |
+| `lsoa21cd` | LSOA 2021 code (primary join key) | ONS boundary code | — |
+| `lsoa21nm` | LSOA 2021 name | ONS boundary name | — |
+| `n_properties` | Number of EPC-registered properties in LSOA | Count from EPC dataset | — |
+| **Raw Input Variables** | | | |
+| `avg_epc_score` | Average EPC energy efficiency score (0–100) | Mean of building-level EPC scores per LSOA | ↑ Higher = Better |
+| `avg_epc_rating_num` | Average EPC rating (A=best → G=worst, mapped to numeric) | Mean of EPC band numeric mappings per LSOA | ↑ Higher = Better |
+| `pct_epc_ABC` | % properties rated EPC A, B, or C | Count(A/B/C) / total properties | ↑ Higher = Better |
+| `avg_floor_area` | Average floor area (m²) per property | Mean of floor area per LSOA | ↑ Higher = Better |
+| `avg_rooms` | Average number of rooms per property | Mean of room count per LSOA | ↑ Higher = Better |
+| `overcrowding_idx` | Overcrowding index: persons per room | Mean persons/rooms across properties | ↓ Lower = Better |
+| `overcrowding_proxy` | Overcrowding proxy: 1 / (avg_floor_area × avg_rooms) | Inverse of space supply; inf → NaN → median impute | ↓ Lower = Better |
+| `median_house_price` | Median residential transaction price (£) | Median of Land Registry prices 2015–2022 per LSOA | ↓ Lower = Better (affordability) |
+| `transport_ptai` | Public Transport Accessibility Index (PTAI) | TfL PTAI score averaged per LSOA | ↑ Higher = Better |
+| `ptal_grade` | PTAI letter grade (1a–6b) | Categorical derived from PTAI score | — (ordinal) |
+| `ptai_high` | Binary: PTAI ≥ 20 (high accessibility) | Indicator variable | ↑ Higher = Better |
+| `ptai_low` | Binary: PTAI < 5 (low accessibility) | Indicator variable | ↓ Lower = Better |
+| `hospital` | Hospital accessibility score | Composite of distance/count to nearest hospitals | ↑ Higher = Better |
+| `GP` | GP surgery accessibility score | Composite of distance/count to nearest GPs | ↑ Higher = Better |
+| `pharmacy` | Pharmacy accessibility score | Composite of distance/count to nearest pharmacies | ↑ Higher = Better |
+| `hospital_rnk` | Hospital accessibility rank within Southwark | Rank 1 = best access | ↑ Higher = Better |
+| `hospital_pct` | Hospital accessibility percentile (0–1) | Rank / N | ↑ Higher = Better |
+| `domain_h` | AHAH healthcare domain score | From ONS AHAH index, healthcare dimension | ↑ Higher = Better |
+| `ahah` | Access to Healthy Assets and Hazards (AHAH) composite | ONS AHAH composite index | ↑ Higher = Better |
+| **HEI Pipeline — Direction-Aligned Variables** (`_al` suffix) | | | |
+| `avg_epc_rating_num_al` | EPC rating, direction-aligned & MinMax scaled | inf/NaN → median → winsorise → Z-score → keep direction → MinMax [0,1] | ↑ Higher = Better |
+| `overcrowding_proxy_al` | Overcrowding proxy, direction-aligned & MinMax scaled | Same pipeline → **invert** (1 − x) → MinMax [0,1] | ↑ Higher = Better |
+| `median_house_price_al` | House price, direction-aligned & MinMax scaled | Same pipeline → **invert** (1 − x) → MinMax [0,1] | ↑ Higher = Better |
+| `transport_ptai_al` | PTAI, direction-aligned & MinMax scaled | Same pipeline → keep direction → MinMax [0,1] | ↑ Higher = Better |
+| `hospital_al` | Hospital access, direction-aligned & MinMax scaled | Same pipeline → keep direction → MinMax [0,1] | ↑ Higher = Better |
+| **Composite Indices** | | | |
+| `HEI_bayes` | Housing Equity Index — Bayesian Latent Factor (primary) | Gibbs sampler K=1, conjugate priors on 5 `_al` vars; output [0,1] | ↓ Lower = Better (0 = most equitable) |
+| `HEI_bayes_uncert` | HEI posterior uncertainty (95% CI width) | `HEI_bayes_hi − HEI_bayes_lo` from Gibbs samples | ↓ Lower = Better |
+| `HEI_bayes_lo` | HEI Bayesian 2.5th percentile | Lower bound of posterior credible interval | — (diagnostic) |
+| `HEI_bayes_hi` | HEI Bayesian 97.5th percentile | Upper bound of posterior credible interval | — (diagnostic) |
+| `HEI_equal` | Housing Equity Index — Equal weights | Simple mean of 5 `_al` variables | ↓ Lower = Better |
+| `HEI_pca` | Housing Equity Index — PCA weights | First principal component of 5 `_al` variables | ↓ Lower = Better |
+| `HEI_quintile` | HEI quintile classification (1–5) | `HEI_bayes` cut into 5 equal groups | Q1 = Best equity; Q5 = Worst |
