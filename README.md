@@ -152,3 +152,74 @@ pip install pandas geopandas numpy scikit-learn matplotlib seaborn esda libpysal
 | `HEI_equal` | Housing Equity Index — Equal weights | Simple mean of 5 `_al` variables | ↓ Lower = Better |
 | `HEI_pca` | Housing Equity Index — PCA weights | First principal component of 5 `_al` variables | ↓ Lower = Better |
 | `HEI_quintile` | HEI quintile classification (1–5) | `HEI_bayes` cut into 5 equal groups | Q1 = Best equity; Q5 = Worst |
+
+---
+
+## Key Results
+
+The figures below represent the most analytically significant outputs across all six research stages. All files are in `code/figures/`.
+
+---
+
+### Stage 1 — Context & Motivation
+
+**`intro_london_price_trends.png`**
+Borough-level median house price trajectories for Greater London (2001–2017). Demonstrates Southwark's sustained above-average price growth and motivates the choice of study area as a site of acute affordability pressure within the inner city.
+
+**`intro_southwark_location_hei.png`**
+Dual-panel figure: (left) Southwark's geographic position within Greater London; (right) the Bayesian Housing Equity Index choropleth at LSOA level. Provides spatial context and serves as the visual anchor for the entire study.
+
+---
+
+### Stage 2 — Housing Equity Index (RQ1–RQ2)
+
+**`map_HEI_bayes_southwark.png`**
+Primary output of the project. Choropleth map of the Bayesian Latent Factor HEI across all 173 Southwark LSOAs (0 = best equity, 1 = worst). Reveals a clear north–south spatial gradient, with riverside and central LSOAs recording the highest deprivation scores.
+
+**`bayes_hei_diagnostics.png`**
+Model validation panel for the Gibbs-sampler Bayesian latent factor. Shows posterior distributions, convergence trace, and comparison of Bayesian HEI against equal-weight and PCA alternatives, confirming model stability and construct validity.
+
+---
+
+### Stage 3 — Spatial Structure (RQ3–RQ4)
+
+**`gwpca_local_loadings.png`**
+Geographically Weighted PCA local factor loadings across Southwark LSOAs. Reveals that the relative contribution of each HEI dimension (EPC, overcrowding, price, transport, healthcare) varies significantly across space — evidence that a single global weighting scheme misrepresents local deprivation drivers.
+
+**`gwpca_dominant_score.png`**
+Maps the dominant deprivation dimension per LSOA derived from GWPCA. Identifies distinct sub-zones driven by price unaffordability (north), transport deficit (south-east), and EPC underperformance (inner areas).
+
+**`spatial_clustering_comparison.png`**
+Three-panel comparison of K-Means, SKATER (spatially constrained), and REDCAP cluster solutions. Demonstrates that imposing spatial contiguity produces more geographically coherent, policy-relevant typologies than unconstrained partitioning.
+
+---
+
+### Stage 4 — Population Sensitivity (RQ5)
+
+**`pop_cluster_profiles.png`**
+Z-scored heatmap and parallel coordinates showing the demographic signature of each K-Means population cluster (Deprived / Elderly / Family / Professional). Confirms that Census 2021 indicators cleanly differentiate four structurally distinct community types across Southwark.
+
+**`h1_anova_boxplots.png`**
+Box plots of nine demographic vulnerability indicators stratified by HEI quintile (Q1 best → Q5 worst). ANOVA results annotated per panel. Supports Hypothesis H1: LSOAs with the worst housing equity systematically concentrate higher proportions of low-income, low-NSSEC, and deprived households.
+
+**`h2_sensitivity_heatmap.png`**
+Full Spearman ρ matrix: nine demographic variables × six HEI components. Insignificant cells (α = 0.05) crossed out. The structured pattern of correlations supports Hypothesis H2 — different population groups are differentially sensitive to specific housing deprivation dimensions (e.g., elderly populations cluster in areas with poor healthcare access).
+
+**`h3_double_deprivation_map.png`**
+Three-panel spatial overlay (Bayesian HEI | Population-type cluster | Zone classification). Identifies Double Deprivation zones (Q4–Q5 HEI + Deprived population) and Double Advantage zones. Bivariate Moran's I confirms statistically significant spatial co-clustering of housing and population disadvantage (Hypothesis H3).
+
+**`hei_adjusted_map.png`**
+Side-by-side comparison of the standard Bayesian HEI and the demographically-adjusted HEI (weights recalibrated by Spearman sensitivity scores). Rank-change panel highlights LSOAs where accounting for population composition substantially re-orders the deprivation ranking.
+
+---
+
+### Stage 5 — Spatial Overlay Analysis (RQ6)
+
+**`overlay_vulnerability_surface.png`**
+Scatter plot positioning all 173 LSOAs in a two-dimensional vulnerability space: housing equity deprivation (x-axis) × composite population vulnerability score (y-axis). Quadrant lines at medians divide the space into four interpretable risk zones; points coloured by joint typology.
+
+**`overlay_policy_matrix.png`**
+5 × 4 policy intervention matrix (housing type A–E × population type). Cell colour encodes priority tier (green = low, red = critical). Provides a directly actionable, evidence-based framework linking analytical typologies to targeted policy responses.
+
+**`overlay_priority_map.png`**
+Dual-panel map: (left) continuous composite intervention priority score per LSOA, combining housing deprivation rank and population vulnerability rank; (right) joint typology classification. The highest-priority LSOAs (dark red) require immediate multi-dimensional intervention addressing both physical housing conditions and socioeconomic vulnerability.
