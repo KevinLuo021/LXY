@@ -1,0 +1,21 @@
+lsoa21cd,lsoa21nm,cluster_type,pop_label,joint_type,HEI_bayes,pop_vuln_score,priority_score,recommended_intervention
+E01003988,Southwark 018B,C,Deprived,Housing Disadvantage,0.9563145353322344,0.6758189051800244,0.9797687861271676,Regeneration + social safety net
+E01003924,Southwark 021E,C,Deprived,Housing Disadvantage,0.9681921684695026,0.6447209140607851,0.9595375722543353,Regeneration + social safety net
+E01003992,Southwark 014A,C,Deprived,Housing Disadvantage,0.7509512258654982,0.7001199842476449,0.9508670520231214,Regeneration + social safety net
+E01003912,Southwark 019A,C,Deprived,Housing Disadvantage,0.7889974912816958,0.6356052326424103,0.9190751445086704,Regeneration + social safety net
+E01003918,Southwark 020D,C,Deprived,Housing Disadvantage,0.8231904372819979,0.5981004602345984,0.9132947976878613,Regeneration + social safety net
+E01003961,Southwark 012B,C,Deprived,Housing Disadvantage,0.7219188031411846,0.6702584586354661,0.9104046242774566,Regeneration + social safety net
+E01004047,Southwark 027B,C,Deprived,Housing Disadvantage,0.7126709135471294,0.644826941615508,0.8872832369942196,Regeneration + social safety net
+E01003986,Southwark 011A,C,Deprived,Housing Disadvantage,0.651985686149803,0.67338849869435,0.8265895953757225,Regeneration + social safety net
+E01004068,Southwark 026E,C,Deprived,Housing Disadvantage,0.6981493900632073,0.5795012072666215,0.8179190751445087,Regeneration + social safety net
+E01004044,Southwark 013E,C,Deprived,Housing Disadvantage,0.672205422172594,0.6348332635244642,0.8150289017341041,Regeneration + social safety net
+E01003943,Southwark 009C,B,Deprived,Transitional,0.7042623031951204,0.5505312198323591,0.8092485549132948,Income support & tenure security
+E01003920,Southwark 021B,C,Deprived,Housing Disadvantage,0.7180475139463978,0.532355314123956,0.7947976878612717,Regeneration + social safety net
+E01033880,Southwark 015H,C,Deprived,Housing Disadvantage,0.6616538255126979,0.6246200990947954,0.7904624277456647,Regeneration + social safety net
+E01033878,Southwark 015F,C,Deprived,Housing Disadvantage,0.6616538255126979,0.6066487800642513,0.7846820809248555,Regeneration + social safety net
+E01004008,Southwark 022B,C,Deprived,Housing Disadvantage,0.6504972269674713,0.6190850021873154,0.777456647398844,Regeneration + social safety net
+E01003922,Southwark 021D,C,Deprived,Housing Disadvantage,0.7158767371342343,0.5077151087779476,0.777456647398844,Regeneration + social safety net
+E01003911,Southwark 020A,C,Deprived,Housing Disadvantage,0.7241198875528306,0.502876829960486,0.7745664739884393,Regeneration + social safety net
+E01003923,Southwark 017A,D,Mixed_0,Double Disadvantage,0.7931648398525535,0.4720783492309248,0.7745664739884393,Monitor & targeted support
+E01004010,Southwark 022D,C,Deprived,Housing Disadvantage,0.6794179611417928,0.547669654998118,0.76878612716763,Regeneration + social safety net
+E01003925,Southwark 020E,C,Deprived,Housing Disadvantage,0.6944988244331239,0.5138535543954659,0.7514450867052023,Regeneration + social safety net

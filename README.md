@@ -1,7 +1,7 @@
 # Housing Equity Analysis in Inner-City London
 ### A Spatiotemporal and Population-Differentiated Study of 173 LSOAs in Southwark
 
-> **MSc Dissertation** · King's College London · Informatics (Urban Informatics) · 2024/25  
+> **MSc Dissertation** · King's College London · Urban Informatics · 2024/25  
 > Supervisor: Dr Yijing Li
 
 ---
@@ -21,19 +21,17 @@ This project develops an integrated, data-driven framework for mapping and expla
 ## Repository Structure
 
 ```
-├── code/
-│   ├── 00_introduction_southwark.ipynb         # Study area context & motivation
-│   ├── 01_data_integration_southwark.ipynb     # Multi-source data pipeline & HEI construction
-│   ├── 02_spatial_distribution_southwark.ipynb # Spatial distribution mapping (RQ1–RQ2)
-│   ├── 03_spatial_autocorrelation_southwark.ipynb  # Moran's I & LISA clustering (RQ3)
-│   ├── 04_clustering_southwark.ipynb           # K-Means, SKATER, REDCAP, GWPCA (RQ4)
-│   ├── 05_population_sensitivity_southwark.ipynb   # H1–H3 hypothesis testing
-│   ├── 06_overlay_analysis_southwark.ipynb     # Dual-deprivation overlay & priority scoring
-│   ├── data/                                   # Processed datasets (see download instructions)
-│   ├── figures/                                # All output figures
-│   ├── LSOA_Shapfile/                          # ONS LSOA 2021 boundary shapefiles
-│   └── download_data.py                        # EPC dataset download script
-└── Final Report Latex Template (Data Science)/ # LaTeX dissertation source
+├── 00_introduction_southwark.ipynb         # Study area context & motivation
+├── 01_data_integration_southwark.ipynb     # Multi-source data pipeline & HEI construction
+├── 02_spatial_distribution_southwark.ipynb # Spatial distribution mapping (RQ1–RQ2)
+├── 03_spatial_autocorrelation_southwark.ipynb  # Moran's I & LISA clustering (RQ3)
+├── 04_clustering_southwark.ipynb           # K-Means, SKATER, REDCAP, GWPCA (RQ4)
+├── 05_population_sensitivity_southwark.ipynb   # H1–H3 hypothesis testing
+├── 06_overlay_analysis_southwark.ipynb     # Dual-deprivation overlay & priority scoring
+├── data/                                   # Processed datasets (see download instructions)
+├── figures/                                # All output figures
+├── LSOA_Shapfile/                          # ONS LSOA 2021 boundary shapefiles
+└── download_data.py                        # EPC dataset download script
 ```
 
 ---
@@ -53,9 +51,8 @@ The EPC dataset (~2.2 GB) is hosted on Hugging Face and must be downloaded separ
 
 ```bash
 pip install huggingface_hub
-cd code
 python download_data.py
-# Downloads to: code/data/epc_london_building_stock.csv
+# Downloads to: data/epc_london_building_stock.csv
 ```
 
 ---
@@ -64,21 +61,21 @@ python download_data.py
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/housing-equity-southwark.git
-cd housing-equity-southwark
+git clone https://github.com/KevinLuo021/LXY.git
+cd LXY
 
 # 2. Install dependencies
 pip install pandas geopandas numpy scikit-learn matplotlib seaborn \
             esda libpysal pysal mgwr scipy statsmodels huggingface_hub
 
 # 3. Download the EPC dataset
-cd code && python download_data.py && cd ..
+python download_data.py
 
 # 4. Run notebooks in order
-jupyter notebook code/
+jupyter notebook
 ```
 
-Run notebooks `00` → `06` in sequence. Each notebook is self-contained and saves its outputs to `code/figures/` and `code/data/`.
+Run notebooks `00` → `06` in sequence. Each notebook is self-contained and saves outputs to `figures/` and `data/`.
 
 ---
 
@@ -133,18 +130,6 @@ Run notebooks `00` → `06` in sequence. Each notebook is self-contained and sav
 
 ---
 
-## Citation
-
-If you use this codebase or findings, please cite:
-
-```
-Li, Xinyu (2025). Spatiotemporal Pattern and Heterogeneous Driving Mechanism of Inner-city
-Housing Equity Under the Goal of Equal Access to Decent Housing: A Case Study of LSOAs in
-Southwark. MSc Dissertation, King's College London.
-```
-
----
-
 ## Licence
 
-Code: MIT License. Data: subject to original provider licences (all OGL v3.0). See `LICENSE` for details.
+Code: MIT License. Data: subject to original provider licences (all OGL v3.0).

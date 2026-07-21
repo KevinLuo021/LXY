@@ -1,5 +1,5 @@
 # === 大数据集(放在 Hugging Face,不进 Git)===
-code/data/epc_london_building_stock.csv
+data/epc_london_building_stock.csv
 
 # === macOS ===
 .DS_Store
@@ -13,3 +13,9 @@ venv/
 
 # === 临时/压缩文件 ===
 *.zip
+LSOA_Shapfile/*.shp
+Final Report Latex Template (Data Science)/
+Final Report Latex Template (Data Science)/
+Final Report Latex Template (Data Science).zip
+page-*.jpg
+pg-*.jpg
