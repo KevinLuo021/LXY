@@ -1,9 +1,6 @@
 # Housing Equity Analysis in Inner-City London
 ### A Spatiotemporal and Population-Differentiated Study of 173 LSOAs in Southwark
 
-> **MSc Dissertation** · King's College London · Urban Informatics · 2024/25  
-> Supervisor: Dr Yijing Li
-
 ---
 
 ## Overview
